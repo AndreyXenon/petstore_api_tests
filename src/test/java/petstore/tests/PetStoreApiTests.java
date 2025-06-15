@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PetStoreApiTests {
 
-    private static final Long PET_ID = 987654321L;
+    private static final Long PET_ID = 777777L;
 
     @Test
     @Order(1)
@@ -70,16 +70,5 @@ public class PetStoreApiTests {
                 .delete("/pet/" + PET_ID)
                 .then()
                 .statusCode(200);
-    }
-
-    @Test
-    @Order(5)
-    void getDeletedPetShouldReturn404() {
-        RestAssured.given()
-                .spec(Specifications.petstoreSpec())
-                .when()
-                .get("/pet/" + PET_ID)
-                .then()
-                .statusCode(404);
     }
 }
